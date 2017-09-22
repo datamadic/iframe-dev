@@ -9,12 +9,53 @@
 </head>
 <body>
   <div>
-    <h1>Hello, world!</h1>
+    <h1>Hello, worlds!</h1>
     <p>This is a template for an OpenFin application.</p>
     <p id="version-number-container">
       Current version: <span id="of-version"></span>
     </p>
   </div>
+  <button onclick="makewindow()">make window</button>
+  <button onclick="devtools()">dev tools</button>
+  <button onclick="cr()">crash reporter start</button>
+  <button onclick="nw()">new window</button>
+  <button onclick="cl()">cors lite</button>
+  <button onclick="crash()">crash</button>
+  <button onclick="vl()">verbose logging</button>
+  <button onclick="toggopts()">toggle opts</button>
+  <button onclick="na()">new app</button>
+  <button onclick="dostuff()">do stuff</button>
+  
+  <button onclick="fin.desktop.Window.getCurrent().moveBy(1,1)">move a bit</button>
+  <button onclick="af()">add frame</button>
+  <div>
+    <div>
+        <h3>unnamed frame</h3>
+        <iframe src="http://localhost:55555/app.json"  frameborder="3"></iframe>
+    </div>
+    <div>
+        <h3>unnamed frame acting as main window</h3>
+        <iframe src="http://localhost:55555/app.json" winapi="true" frameborder="3"></iframe>
+    </div>
+    <div>
+      named frame
+        <iframe  name="named_frame" src="http://localhost:55555/app.json" frameborder="3"></iframe>
+    </div>
+    <div>
+      xorigin frame
+      <iframe name="super_duper_x_origin" src="https://mdn-samples.mozilla.org/snippets/html/iframe-simple-contents.html" title="iframe example 1" width="400" height="300">
+        <p>Your browser does not support iframes.</p>
+      </iframe>
+    </div>
+    
+  </div>
+  <div>
+    fin.desktop.InterApplicationBus.subscribe('*', 'foo', (a, b, c) => console.log(`[${name}]: `, a, b, c));
+    <div>
+      fin.desktop.InterApplicationBus.publish('foo', 1234);
+    </div>
+  </div>
+  
   <script src="js/main.js"></script>
 </body>
 </html>
